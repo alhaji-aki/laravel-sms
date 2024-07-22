@@ -7,8 +7,21 @@ This is a to help integrate various sms providers in one project. This allows us
 You can install the package via composer by running:
 
 ```bash
-composer require "alhaji-aki/sms"
+composer require "alhaji-aki/laravel-sms"
 ```
+
+After the installation has completed, the package will automatically register itself.
+Run the following to publish the config file
+
+```bash
+php artisan vendor:publish --provider="AlhajiAki\Sms\SmsServiceProvider"
+```
+
+<!-- Show config -->
+
+<!-- Usage -->
+<!-- as notification -->
+<!-- as normal call -->
 
 ## Testing
 
