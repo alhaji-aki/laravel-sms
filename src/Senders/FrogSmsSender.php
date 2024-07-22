@@ -8,9 +8,8 @@ use AlhajiAki\Sms\TextMessage;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use Stringable;
 
-class FrogSmsSender implements SenderInterface, Stringable
+class FrogSmsSender implements SenderInterface
 {
     /**
      * The frog sms configuration.

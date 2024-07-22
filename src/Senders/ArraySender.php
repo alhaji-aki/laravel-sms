@@ -5,9 +5,8 @@ namespace AlhajiAki\Sms\Senders;
 use AlhajiAki\Sms\SentMessage;
 use AlhajiAki\Sms\TextMessage;
 use Illuminate\Support\Collection;
-use Stringable;
 
-class ArraySender implements SenderInterface, Stringable
+class ArraySender implements SenderInterface
 {
     /**
      * The collection of messages.

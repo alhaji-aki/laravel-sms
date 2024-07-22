@@ -5,9 +5,8 @@ namespace AlhajiAki\Sms\Senders;
 use AlhajiAki\Sms\SentMessage;
 use AlhajiAki\Sms\TextMessage;
 use Psr\Log\LoggerInterface;
-use Stringable;
 
-class LogSender implements SenderInterface, Stringable
+class LogSender implements SenderInterface
 {
     /**
      * The Logger instance.

@@ -59,7 +59,6 @@ class RoundRobinSender implements SenderInterface
 
     public function __toString(): string
     {
-        // @phpstan-ignore-next-line
         return $this->getNameSymbol().'('.implode(' ', array_map('strval', $this->senders)).')';
     }
 

@@ -18,6 +18,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Global "From" Address
+    |--------------------------------------------------------------------------
+    |
+    | You may wish for all text messages sent by your application to be sent from
+    | the same address. Here you may specify a name and address that is
+    | used globally for all messages that are sent by your application.
+    |
+    */
+
+    'from' => env('SMS_FROM_NAME', 'Example'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Sender Configurations
     |--------------------------------------------------------------------------
     |
@@ -82,18 +95,5 @@ return [
         ],
 
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Global "From" Address
-    |--------------------------------------------------------------------------
-    |
-    | You may wish for all text messages sent by your application to be sent from
-    | the same address. Here you may specify a name and address that is
-    | used globally for all messages that are sent by your application.
-    |
-    */
-
-    'from' => env('SMS_FROM_NAME', 'Example'),
 
 ];

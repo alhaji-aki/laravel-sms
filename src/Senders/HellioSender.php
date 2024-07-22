@@ -6,9 +6,8 @@ use AlhajiAki\Sms\SentMessage;
 use AlhajiAki\Sms\TextMessage;
 use NotificationChannels\Hellio\Clients\HellioSMSClient;
 use NotificationChannels\Hellio\HellioMessage;
-use Stringable;
 
-class HellioSender implements SenderInterface, Stringable
+class HellioSender implements SenderInterface
 {
     /**
      * The Hellio sms client.

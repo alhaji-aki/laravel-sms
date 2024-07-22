@@ -8,11 +8,10 @@ use AlhajiAki\Sms\TextMessage;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 use InvalidArgumentException;
-use Stringable;
 
 use function Safe\json_encode;
 
-class SlackSender implements SenderInterface, Stringable
+class SlackSender implements SenderInterface
 {
     /**
      * The slack configuration.

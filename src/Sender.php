@@ -5,12 +5,9 @@ namespace AlhajiAki\Sms;
 use AlhajiAki\Sms\Contracts\Sender as SenderContract;
 use AlhajiAki\Sms\Events\SmsMessageSending;
 use AlhajiAki\Sms\Events\SmsMessageSent;
-use AlhajiAki\Sms\Message\Message;
 use AlhajiAki\Sms\Senders\SenderInterface;
 use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Contracts\Queue\Factory as QueueContract;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Mail\Textables\Address;
 use Illuminate\Support\Traits\Macroable;
 
 class Sender implements SenderContract
