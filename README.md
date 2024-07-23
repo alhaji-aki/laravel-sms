@@ -274,6 +274,56 @@ The `send()` method of accepts 4 parameters explained below:
 - `$from`: The from address. This is a string or null. If it is not provided the sender's `from` or the global `from` set in the `config/sms.php` file will be used.
 - `$data`: The data to be sent to the sender
 
+## Sms and Local Development
+
+When developing an application that sends sms, you probably don't want to actually send messages to live phone numbers. This package provides several ways to "disable" the actual sending of messages during local development.
+
+### Log Driver
+
+Instead of sending your messages, the log sender driver will write all messages to your log files for inspection. Typically, this driver would only be used during local development. For more information on configuring your application per environment, check out the configuration documentation.
+
+### Slack Driver
+
+Alternatively, you may use the slack driver to send your messages where you may view them. This approach has the benefit of allowing you to actually inspect the final message.
+
+### Using a Global to Address
+
+Finally, you may specify a global "to" address by invoking the alwaysTo method offered by the `Sms` facade. Typically, this method should be called from the boot method of one of your application's service providers:
+
+```php
+use AlhajiAki\Sms\Sms;
+
+/**
+ * Bootstrap any application services.
+ */
+public function boot(): void
+{
+    if ($this->app->environment('local')) {
+        Sms::alwaysTo('+3212345678');
+    }
+}
+```
+
+## Events
+
+We dispatch two events while sending sms messages. The `SmsMessageSending` event is dispatched prior to a message being sent, while the `SmsMessageSent` event is dispatched after a message has been sent. Remember, these events are dispatched when the sms is being sent, not when it is queued. You may create event listeners for these events within your application:
+
+```php
+use AlhajiAki\Sms\Events\SmsMessageSending;
+// use AlhajiAki\Sms\Events\SmsMessageSent;
+
+class LogMessage
+{
+    /**
+     *Handle the given event.
+     */
+    public function handle(SmsMessageSending $event): void
+    {
+        // ...
+    }
+}
+```
+
 ## Custom Senders
 
 You may wish to write your own senders to deliver sms via other services that this package does not support out of the box. To get started, define a class that extends the `AlhajiAki\Sms\Senders\SenderInterface` class. Then, implement the `send()` and `__toString()` methods on your sender:
