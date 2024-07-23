@@ -5,7 +5,6 @@ on:
         types: [released]
 
 permissions:
-    pull-requests: write
     contents: write
 
 jobs:
