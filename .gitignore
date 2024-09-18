@@ -2,6 +2,9 @@ build
 vendor
 tests/TestSupport/temp
 tests/temp
+/.fleet
+/.idea
+/.vscode
 composer.lock
 phpunit.xml
 .env
