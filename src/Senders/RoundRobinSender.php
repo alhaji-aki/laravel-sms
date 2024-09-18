@@ -36,7 +36,7 @@ class RoundRobinSender implements SenderInterface
         }
 
         $this->senders = $senders;
-        $this->deadSenders = new \SplObjectStorage();
+        $this->deadSenders = new \SplObjectStorage;
         $this->retryPeriod = $retryPeriod;
     }
 

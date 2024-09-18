@@ -147,7 +147,7 @@ class SmsManager implements FactoryContract
         return new HellioSender(new HellioSMSClient(
             $config['client_id'] ?? '', // @phpstan-ignore-line
             $config['app_secret'] ?? '', // @phpstan-ignore-line
-            new \GuzzleHttp\Client()
+            new \GuzzleHttp\Client
         ), $config);
     }
 
