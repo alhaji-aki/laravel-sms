@@ -139,7 +139,7 @@ class Sender implements SenderContract
      */
     protected function createMessage(): TextMessage
     {
-        $message = new TextMessage();
+        $message = new TextMessage;
 
         // If a global from address has been specified we will set it on every message
         // instance so the developer does not have to repeat themselves every time

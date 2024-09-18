@@ -3,7 +3,6 @@
 namespace AlhajiAki\Sms\Senders;
 
 use AlhajiAki\Sms\Exception\FailedSmsException;
-use AlhajiAki\Sms\Senders\SenderInterface;
 use AlhajiAki\Sms\SentMessage;
 use AlhajiAki\Sms\TextMessage;
 use Illuminate\Support\Facades\Http;
