@@ -42,7 +42,8 @@ return [
     | when delivering a text message. You may specify which one you're using for
     | your senders below. You may also add additional senders if needed.
     |
-    | Supported: "hellio", "log", "array", "slack", "failover", "roundrobin"
+    | Supported: "hellio", "frog_sms", "arkesel", "log", "array", "slack", "failover",
+    |            "roundrobin"
     |
     */
 
@@ -61,6 +62,13 @@ return [
             'from' => env('FROG_SMS_SENDER_ID'),
             'service_type' => 'SMS',
             'message_type' => env('FROG_SMS_MESSAGE_TYPE', 'text'),
+        ],
+
+        'arkesel' => [
+            'sender' => 'arkesel',
+            'sender_id' => env('ARKESEL_SENDER_ID'),
+            'api_key' => env('ARKESEL_API_KEY'),
+            'sandbox' => (bool) env('ARKESEL_SANDBOX', false),
         ],
 
         'slack' => [
@@ -83,6 +91,7 @@ return [
             'sender' => 'failover',
             'senders' => [
                 'log',
+                'array',
             ],
         ],
 

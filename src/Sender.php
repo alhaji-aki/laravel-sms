@@ -158,11 +158,7 @@ class Sender implements SenderContract
     {
         $message->ensureValidity();
 
-        try {
-            return $this->driver->send($message);
-        } finally {
-            //
-        }
+        return $this->driver->send($message);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace AlhajiAki\Sms;
 
 use AlhajiAki\Sms\Contracts\Factory as FactoryContract;
 use AlhajiAki\Sms\Contracts\Sender as SenderContract;
+use AlhajiAki\Sms\Senders\ArkeselSender;
 use AlhajiAki\Sms\Senders\ArraySender;
 use AlhajiAki\Sms\Senders\FailoverSender;
 use AlhajiAki\Sms\Senders\FrogSmsSender;
@@ -158,6 +159,16 @@ class SmsManager implements FactoryContract
     protected function createFrogSmsSender(array $config): FrogSmsSender
     {
         return new FrogSmsSender($config);
+    }
+
+    /**
+     * Create an instance of the Arkesel Sender driver.
+     *
+     * @param  array<string, mixed>  $config
+     */
+    protected function createArkeselSender(array $config): ArkeselSender
+    {
+        return new ArkeselSender($config);
     }
 
     /**
