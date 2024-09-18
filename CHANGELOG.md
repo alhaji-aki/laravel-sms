@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-sms` will be documented in this file.
 
+## 0.1.1 - 2024-09-18
+
+**Full Changelog**: https://github.com/alhaji-aki/laravel-sms/compare/0.1.0...0.1.1
+
 ## 0.1.0 - 2024-09-18
 
 ### What's Changed
