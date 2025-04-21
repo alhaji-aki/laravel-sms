@@ -128,27 +128,13 @@ class SmsManager implements FactoryContract
 
         if (
             trim($driver ?? '') === '' ||
-            ! method_exists($this, $method = 'create'.ucfirst(Str::camel($driver ?? '')).'Sender')
+            ! method_exists($this, $method = 'create' . ucfirst(Str::camel($driver ?? '')) . 'Sender')
         ) {
             throw new InvalidArgumentException("Unsupported sms sender [{$driver}].");
         }
 
         /** @var \AlhajiAki\Sms\Senders\SenderInterface */
         return $this->{$method}($config);
-    }
-
-    /**
-     * Create an instance of the Hellio Sender driver.
-     *
-     * @param  array<string, mixed>  $config
-     */
-    protected function createHellioSender(array $config): HellioSender
-    {
-        return new HellioSender(new HellioSMSClient(
-            $config['client_id'] ?? '', // @phpstan-ignore-line
-            $config['app_secret'] ?? '', // @phpstan-ignore-line
-            new \GuzzleHttp\Client
-        ), $config);
     }
 
     /**
@@ -265,10 +251,10 @@ class SmsManager implements FactoryContract
      */
     protected function setGlobalAddress(Sender $sender, array $config, string $type): void
     {
-        $value = Arr::get($config, $type) ?? $this->app['config']['sms.'.$type]; // @phpstan-ignore-line
+        $value = Arr::get($config, $type) ?? $this->app['config']['sms.' . $type]; // @phpstan-ignore-line
 
         if (isset($value)) {
-            $sender->{'always'.Str::studly($type)}($value);
+            $sender->{'always' . Str::studly($type)}($value);
         }
     }
 

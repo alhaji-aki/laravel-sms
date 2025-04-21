@@ -66,17 +66,11 @@ return [
     | when delivering a text message. You may specify which one you're using for
     | your senders below. You may also add additional senders if needed.
     |
-    | Supported: "hellio", "log", "array", "slack", "failover", "roundrobin"
+    | Supported: "log", "array", "slack", "failover", "roundrobin"
     |
     */
 
     'senders' => [
-        'hellio' => [
-            'sender' => 'hellio',
-            'client_id' => env('HELLIO_CLIENT_ID'),
-            'app_secret' => env('HELLIO_APP_SECRET'),
-            'from' => env('HELLIO_SENDER_ID'),
-        ],
 
         'frog_sms' => [
             'sender' => 'frog_sms',
@@ -123,7 +117,7 @@ return [
 ];
 ```
 
-The package comes preconfigured for sms providers like [Hellio](https://helliomessaging.com), [Wigal](https://frog.wigal.com.gh), Slack, Log and array.
+The package comes preconfigured for sms providers like [Wigal](https://frog.wigal.com.gh), Slack, Log and array.
 
 ### Failover Configuration
 
@@ -185,11 +179,13 @@ If each sender has their own "from" address, you can specify it in the sender's 
 
 ```php
 'senders' => [
-    'hellio' => [
-        'sender' => 'hellio',
-        'client_id' => env('HELLIO_CLIENT_ID'),
-        'app_secret' => env('HELLIO_APP_SECRET'),
-        'from' => env('HELLIO_SENDER_ID'),
+    'frog_sms' => [
+        'sender' => 'frog_sms',
+        'username' => env('FROG_SMS_USERNAME'),
+        'password' => env('FROG_SMS_PASSWORD'),
+        'from' => env('FROG_SMS_SENDER_ID'),
+        'service_type' => 'SMS',
+        'message_type' => env('FROG_SMS_MESSAGE_TYPE', 'text'),
     ],
  
     // ...

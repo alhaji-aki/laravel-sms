@@ -19,7 +19,7 @@ class FrogSmsSender implements SenderInterface
     protected array $config;
 
     /**
-     * Create a new hellio sender instance.
+     * Create a new frog_sms sender instance.
      *
      * @param  array<string, mixed>  $config
      * @return void
@@ -37,7 +37,7 @@ class FrogSmsSender implements SenderInterface
         $destinations = is_string($message->getTo()) ? [$message->getTo()] : $message->getTo();
 
         $destinations = collect($destinations)
-            ->map(fn ($destination) => ['destination' => $destination, 'msgid' => Str::random(10)])
+            ->map(fn($destination) => ['destination' => $destination, 'msgid' => Str::random(10)])
             ->toArray();
 
         $response = Http::baseUrl('https://frog.wigal.com.gh/api/v2/')
@@ -70,6 +70,6 @@ class FrogSmsSender implements SenderInterface
      */
     public function __toString(): string
     {
-        return 'hellio';
+        return 'frog_sms';
     }
 }
