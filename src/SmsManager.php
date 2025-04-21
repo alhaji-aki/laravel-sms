@@ -240,6 +240,7 @@ class SmsManager implements FactoryContract
     {
         $logger = $this->app->make(LoggerInterface::class);
 
+        // @phpstan-ignore-next-line
         if ($logger instanceof LogManager) {
             $logger = $logger->channel(
                 $config['channel'] ?? $this->app['config']->get('sms.log_channel') // @phpstan-ignore-line
