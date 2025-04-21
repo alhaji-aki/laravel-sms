@@ -48,13 +48,6 @@ return [
     */
 
     'senders' => [
-        'hellio' => [
-            'sender' => 'hellio',
-            'client_id' => env('HELLIO_CLIENT_ID'),
-            'app_secret' => env('HELLIO_APP_SECRET'),
-            'from' => env('HELLIO_SENDER_ID'),
-        ],
-
         'frog_sms' => [
             'sender' => 'frog_sms',
             'username' => env('FROG_SMS_USERNAME'),

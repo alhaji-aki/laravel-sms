@@ -26,7 +26,6 @@
         "propaganistas/laravel-phone": "^5.3"
     },
     "require-dev": {
-        "helliomessaging/helliomessaging-laravel-notification-channel": "^1.4",
         "larastan/larastan": "^2.7.0|^3.0",
         "laravel/pint": "^1.13",
         "mockery/mockery": "^1.3",
