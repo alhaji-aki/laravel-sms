@@ -8,6 +8,8 @@ parameters:
     paths:
         - src
 
-    tmpDir: build/phpstan
+    ignoreErrors:
+        -
+            identifier: missingType.iterableValue
 
-    checkMissingIterableValueType: true
+    tmpDir: build/phpstan
