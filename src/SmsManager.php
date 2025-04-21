@@ -8,7 +8,6 @@ use AlhajiAki\Sms\Senders\ArkeselSender;
 use AlhajiAki\Sms\Senders\ArraySender;
 use AlhajiAki\Sms\Senders\FailoverSender;
 use AlhajiAki\Sms\Senders\FrogSmsSender;
-use AlhajiAki\Sms\Senders\HellioSender;
 use AlhajiAki\Sms\Senders\LogSender;
 use AlhajiAki\Sms\Senders\RoundRobinSender;
 use AlhajiAki\Sms\Senders\SenderInterface;
@@ -19,7 +18,6 @@ use Illuminate\Log\LogManager;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
-use NotificationChannels\Hellio\Clients\HellioSMSClient;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -128,7 +126,7 @@ class SmsManager implements FactoryContract
 
         if (
             trim($driver ?? '') === '' ||
-            ! method_exists($this, $method = 'create' . ucfirst(Str::camel($driver ?? '')) . 'Sender')
+            ! method_exists($this, $method = 'create'.ucfirst(Str::camel($driver ?? '')).'Sender')
         ) {
             throw new InvalidArgumentException("Unsupported sms sender [{$driver}].");
         }
@@ -251,10 +249,10 @@ class SmsManager implements FactoryContract
      */
     protected function setGlobalAddress(Sender $sender, array $config, string $type): void
     {
-        $value = Arr::get($config, $type) ?? $this->app['config']['sms.' . $type]; // @phpstan-ignore-line
+        $value = Arr::get($config, $type) ?? $this->app['config']['sms.'.$type]; // @phpstan-ignore-line
 
         if (isset($value)) {
-            $sender->{'always' . Str::studly($type)}($value);
+            $sender->{'always'.Str::studly($type)}($value);
         }
     }
 
