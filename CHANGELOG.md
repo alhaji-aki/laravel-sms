@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-sms` will be documented in this file.
 
+## 0.2.0 - 2025-04-21
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/alhaji-aki/laravel-sms/pull/3
+* Laravel 12 Support by @alhaji-aki in https://github.com/alhaji-aki/laravel-sms/pull/4
+
+**Full Changelog**: https://github.com/alhaji-aki/laravel-sms/compare/0.1.1...0.2.0
+
 ## 0.1.1 - 2024-09-18
 
 **Full Changelog**: https://github.com/alhaji-aki/laravel-sms/compare/0.1.0...0.1.1
