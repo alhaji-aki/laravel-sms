@@ -3,6 +3,7 @@
 namespace AlhajiAki\Sms\Notification\Channels;
 
 use AlhajiAki\Sms\Contracts\Factory as SmsFactory;
+use AlhajiAki\Sms\Notification\Messages\SmsMessage;
 use AlhajiAki\Sms\SentMessage;
 use Illuminate\Notifications\Notification;
 
@@ -25,7 +26,7 @@ class SmsChannel
         }
 
         /**
-         * @var \AlhajiAki\Sms\Notification\Messages\SmsMessage
+         * @var SmsMessage
          */
         $message = $notification->toSms($notifiable); // @phpstan-ignore-line
 

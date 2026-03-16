@@ -11,7 +11,7 @@ class ArraySender implements SenderInterface
     /**
      * The collection of messages.
      *
-     * @var \Illuminate\Support\Collection<int, SentMessage>
+     * @var Collection<int, SentMessage>
      */
     protected $messages;
 
@@ -36,7 +36,7 @@ class ArraySender implements SenderInterface
     /**
      * Retrieve the collection of messages.
      *
-     * @return \Illuminate\Support\Collection<int, SentMessage>
+     * @return Collection<int, SentMessage>
      */
     public function messages(): Collection
     {
@@ -46,7 +46,7 @@ class ArraySender implements SenderInterface
     /**
      * Clear all of the messages from the local collection.
      *
-     * @return \Illuminate\Support\Collection<int, SentMessage>
+     * @return Collection<int, SentMessage>
      */
     public function flush(): Collection
     {
