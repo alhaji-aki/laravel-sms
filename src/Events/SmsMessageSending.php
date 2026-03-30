@@ -9,7 +9,7 @@ class SmsMessageSending
     /**
      * The Text message instance.
      *
-     * @var \AlhajiAki\Sms\TextMessage
+     * @var TextMessage
      */
     public $message;
 
