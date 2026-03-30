@@ -21,7 +21,7 @@ use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 
 /**
- * @mixin \AlhajiAki\Sms\Sender
+ * @mixin Sender
  */
 class SmsManager implements FactoryContract
 {
@@ -75,7 +75,7 @@ class SmsManager implements FactoryContract
     /**
      * Resolve the given sender.
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function resolve(string $name): Sender
     {
@@ -113,7 +113,7 @@ class SmsManager implements FactoryContract
      *
      * @param  array<string, mixed>  $config
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function createSender(array $config): SenderInterface
     {
@@ -131,7 +131,7 @@ class SmsManager implements FactoryContract
             throw new InvalidArgumentException("Unsupported sms sender [{$driver}].");
         }
 
-        /** @var \AlhajiAki\Sms\Senders\SenderInterface */
+        /** @var SenderInterface */
         return $this->{$method}($config);
     }
 
