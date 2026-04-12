@@ -34,7 +34,7 @@ class SmsChannel
             message: $message->message,
             to: $to,
             from: $message->from ?? null,
-            data: $message->data ?? [],
+            data: $message->data,
         );
     }
 }
