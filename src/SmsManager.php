@@ -126,7 +126,7 @@ class SmsManager implements FactoryContract
 
         if (
             trim($driver ?? '') === '' ||
-            ! method_exists($this, $method = 'create'.ucfirst(Str::camel($driver ?? '')).'Sender')
+            ! method_exists($this, $method = 'create'.ucfirst(Str::camel($driver)).'Sender')
         ) {
             throw new InvalidArgumentException("Unsupported sms sender [{$driver}].");
         }
