@@ -27,7 +27,7 @@ use Illuminate\Support\Testing\Fakes\MailFake;
  * @method static bool hasMacro(string $name)
  * @method static void flushMacros()
  *
- * @see \AlhajiAki\Sms\SmsManager
+ * @see SmsManager
  */
 // TODO: implement these
 // * @method static void assertSent(string|\Closure $mailable, callable|array|string|int|null $callback = null)

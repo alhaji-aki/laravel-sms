@@ -3,16 +3,17 @@
 namespace AlhajiAki\Sms\Events;
 
 use AlhajiAki\Sms\SentMessage;
+use AlhajiAki\Sms\TextMessage;
 
 /**
- * @property \AlhajiAki\Sms\TextMessage $message
+ * @property TextMessage $message
  */
 class SmsMessageSent
 {
     /**
      * The message that was sent.
      *
-     * @var \AlhajiAki\Sms\SentMessage
+     * @var SentMessage
      */
     public $sent;
 

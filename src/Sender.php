@@ -7,6 +7,7 @@ use AlhajiAki\Sms\Events\SmsMessageSending;
 use AlhajiAki\Sms\Events\SmsMessageSent;
 use AlhajiAki\Sms\Senders\SenderInterface;
 use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Contracts\Queue\Factory;
 use Illuminate\Contracts\Queue\Factory as QueueContract;
 use Illuminate\Support\Traits\Macroable;
 
@@ -22,14 +23,14 @@ class Sender implements SenderContract
     /**
      * The Sms Provider instance.
      *
-     * @var \AlhajiAki\Sms\Senders\SenderInterface
+     * @var SenderInterface
      */
     protected $driver;
 
     /**
      * The event dispatcher instance.
      *
-     * @var \Illuminate\Contracts\Events\Dispatcher|null
+     * @var Dispatcher|null
      */
     protected $events;
 
@@ -48,7 +49,7 @@ class Sender implements SenderContract
     /**
      * The queue factory implementation.
      *
-     * @var \Illuminate\Contracts\Queue\Factory
+     * @var Factory
      */
     protected $queue;
 
@@ -188,7 +189,7 @@ class Sender implements SenderContract
     /**
      * Get the driver instance.
      *
-     * @return \AlhajiAki\Sms\Senders\SenderInterface
+     * @return SenderInterface
      */
     public function getDriver()
     {

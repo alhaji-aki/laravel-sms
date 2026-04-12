@@ -11,7 +11,7 @@ class LogSender implements SenderInterface
     /**
      * The Logger instance.
      *
-     * @var \Psr\Log\LoggerInterface
+     * @var LoggerInterface
      */
     protected $logger;
 
@@ -38,7 +38,7 @@ class LogSender implements SenderInterface
     /**
      * Get the logger for the LogSender instance.
      *
-     * @return \Psr\Log\LoggerInterface
+     * @return LoggerInterface
      */
     public function logger()
     {
