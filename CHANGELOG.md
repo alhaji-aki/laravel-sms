@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-sms` will be documented in this file.
 
+## 0.3.1 - 2026-04-13
+
+### What's Changed
+
+* update safe packages by @alhaji-aki in https://github.com/alhaji-aki/laravel-sms/pull/14
+
+**Full Changelog**: https://github.com/alhaji-aki/laravel-sms/compare/0.3.0...0.3.1
+
 ## 0.3.0 - 2026-04-12
 
 ### What's Changed
