@@ -40,9 +40,12 @@ class WhapiSender implements SenderInterface
             'app_id' => $this->config['app_id'],
         ];
 
+        /** @var string $apiKey */
+        $apiKey = $this->config['api_key'];
+
         $response = Http::baseUrl('https://whaapi.flobaze.com/api')
             ->asJson()
-            ->withToken($this->config['api_key'])
+            ->withToken($apiKey)
             ->post('v1/send-message', $payload);
 
         if ($response->failed() || ! boolval($response->json('success'))) {
