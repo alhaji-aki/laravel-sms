@@ -1,0 +1,2 @@
+providers:
+  - AlhajiAki\Sms\SmsServiceProvider

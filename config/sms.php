@@ -71,6 +71,12 @@ return [
             'emoji' => env('SMS_LOG_SLACK_EMOJI'),
         ],
 
+        'whapi' => [
+            'sender' => 'whapi',
+            'app_id' => env('WHAPI_APP_ID'),
+            'api_key' => env('WHAPI_API_KEY'),
+        ],
+
         'log' => [
             'sender' => 'log',
             'channel' => env('SMS_LOG_CHANNEL'),
