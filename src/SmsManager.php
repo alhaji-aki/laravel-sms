@@ -12,6 +12,7 @@ use AlhajiAki\Sms\Senders\LogSender;
 use AlhajiAki\Sms\Senders\RoundRobinSender;
 use AlhajiAki\Sms\Senders\SenderInterface;
 use AlhajiAki\Sms\Senders\SlackSender;
+use AlhajiAki\Sms\Senders\WhapiSender;
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Log\LogManager;
@@ -163,6 +164,16 @@ class SmsManager implements FactoryContract
     protected function createSlackSender(array $config): SlackSender
     {
         return new SlackSender($config);
+    }
+
+    /**
+     * Create an instance of the Slack Sender driver.
+     *
+     * @param  array<string, mixed>  $config
+     */
+    protected function createWhapiSender(array $config): WhapiSender
+    {
+        return new WhapiSender($config);
     }
 
     /**
