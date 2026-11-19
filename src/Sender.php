@@ -112,8 +112,6 @@ class Sender implements SenderContract
             $sentMessage = $this->sendMessage($message);
 
             if ($sentMessage) {
-                $sentMessage = new SentMessage($message);
-
                 $this->dispatchSentEvent($sentMessage);
 
                 return $sentMessage;

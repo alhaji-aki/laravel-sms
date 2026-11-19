@@ -3,6 +3,7 @@
 namespace AlhajiAki\Sms\Senders;
 
 use AlhajiAki\Sms\Exception\FailedSmsException;
+use AlhajiAki\Sms\RecipientResult;
 use AlhajiAki\Sms\SentMessage;
 use AlhajiAki\Sms\TextMessage;
 use Illuminate\Support\Arr;
@@ -34,11 +35,9 @@ class FrogSmsSender implements SenderInterface
      */
     public function send(TextMessage $message): ?SentMessage
     {
-        $destinations = is_string($message->getTo()) ? [$message->getTo()] : $message->getTo();
-
-        $destinations = collect($destinations)
-            ->map(fn ($destination) => ['destination' => $destination, 'msgid' => Str::random(10)])
-            ->toArray();
+        $destinations = collect($message->recipients())
+            ->map(fn (string $destination) => ['destination' => $destination, 'msgid' => Str::random(10)])
+            ->all();
 
         $response = Http::baseUrl('https://frog.wigal.com.gh/api/v2/')
             ->post('sendmsg', $payload = [
@@ -62,7 +61,13 @@ class FrogSmsSender implements SenderInterface
             );
         }
 
-        return (new SentMessage($message))->appendDebug($response->body());
+        $sentMessage = (new SentMessage($message))->appendDebug($response->body());
+
+        foreach ($destinations as $destination) {
+            $sentMessage->addRecipient(RecipientResult::accepted($destination['destination'], $destination['msgid']));
+        }
+
+        return $sentMessage;
     }
 
     /**

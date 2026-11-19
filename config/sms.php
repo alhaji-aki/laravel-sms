@@ -42,8 +42,8 @@ return [
     | when delivering a text message. You may specify which one you're using for
     | your senders below. You may also add additional senders if needed.
     |
-    | Supported: "hellio", "frog_sms", "arkesel", "log", "array", "slack", "failover",
-    |            "roundrobin"
+    | Supported: "frog_sms", "arkesel", "appsnmobile", "whapi", "log", "array", "slack",
+    |            "failover", "roundrobin"
     |
     */
 
@@ -62,6 +62,15 @@ return [
             'sender_id' => env('ARKESEL_SENDER_ID'),
             'api_key' => env('ARKESEL_API_KEY'),
             'sandbox' => (bool) env('ARKESEL_SANDBOX', false),
+        ],
+
+        'appsnmobile' => [
+            'sender' => 'appsnmobile',
+            'base_url' => env('APPSNMOBILE_BASE_URL', 'https://orchard-api.anmgw.com'),
+            'client_id' => env('APPSNMOBILE_CLIENT_ID'),
+            'secret_key' => env('APPSNMOBILE_SECRET_KEY'),
+            'service_id' => env('APPSNMOBILE_SERVICE_ID'),
+            'message_type' => env('APPSNMOBILE_MESSAGE_TYPE', 'T'),
         ],
 
         'slack' => [

@@ -59,7 +59,7 @@ class WhapiSender implements SenderInterface
             );
         }
 
-        return (new SentMessage($message))->appendDebug($response->body());
+        return (new SentMessage($message))->acceptAll()->appendDebug($response->body());
     }
 
     /**

@@ -66,7 +66,8 @@ return [
     | when delivering a text message. You may specify which one you're using for
     | your senders below. You may also add additional senders if needed.
     |
-    | Supported: "log", "array", "slack", "failover", "roundrobin"
+    | Supported: "frog_sms", "arkesel", "appsnmobile", "whapi", "log", "array", "slack",
+    |            "failover", "roundrobin"
     |
     */
 
@@ -79,6 +80,15 @@ return [
             'from' => env('FROG_SMS_SENDER_ID'),
             'service_type' => 'SMS',
             'message_type' => env('FROG_SMS_MESSAGE_TYPE', 'text'),
+        ],
+
+        'appsnmobile' => [
+            'sender' => 'appsnmobile',
+            'base_url' => env('APPSNMOBILE_BASE_URL', 'https://orchard-api.anmgw.com'),
+            'client_id' => env('APPSNMOBILE_CLIENT_ID'),
+            'secret_key' => env('APPSNMOBILE_SECRET_KEY'),
+            'service_id' => env('APPSNMOBILE_SERVICE_ID'),
+            'message_type' => env('APPSNMOBILE_MESSAGE_TYPE', 'T'),
         ],
 
         'slack' => [
@@ -117,7 +127,7 @@ return [
 ];
 ```
 
-The package comes preconfigured for sms providers like [Wigal](https://frog.wigal.com.gh), Slack, Log and array.
+The package comes preconfigured for sms providers like [Wigal](https://frog.wigal.com.gh), [Arkesel](https://arkesel.com), Apps n Mobile (Orchard), Slack, Log and array.
 
 ### Failover Configuration
 
@@ -270,6 +280,24 @@ The `send()` method of accepts 4 parameters explained below:
 - `$from`: The from address. This is a string or null. If it is not provided the sender's `from` or the global `from` set in the `config/sms.php` file will be used.
 - `$data`: The data to be sent to the sender
 
+### Knowing what happened to each recipient
+
+`send()` returns a `SentMessage`. Its `getRecipients()` lists a `RecipientResult` for every recipient: its `phone`, whether the provider `accepted` it, the provider's id for it (`providerMessageId`) when there is one, and the `reason` when it was refused.
+
+```php
+use AlhajiAki\Sms\Sms;
+
+$sent = Sms::sender('arkesel')->send('Open late on Friday', ['+233244000001', '+233244000002']);
+
+foreach ($sent->getRecipients() as $recipient) {
+    $recipient->accepted
+        ? logger()->info("Sent to {$recipient->phone}", ['id' => $recipient->providerMessageId])
+        : logger()->warning("Not sent to {$recipient->phone}: {$recipient->reason}");
+}
+```
+
+A sender throws `FailedSmsException` when the provider accepts none of the recipients, so a message to one number fails just as it always has. When it accepts some, the refused ones are reported in the results instead.
+
 ## Sms and Local Development
 
 When developing an application that sends sms, you probably don't want to actually send messages to live phone numbers. This package provides several ways to "disable" the actual sending of messages during local development.
@@ -353,6 +381,8 @@ class TwilioSender implements SenderInterface
     }
 }
 ```
+
+Report what the provider said about each recipient with `$sentMessage->addRecipient(RecipientResult::accepted($phone, $id))` or `RecipientResult::refused($phone, $reason)`, or call `$sentMessage->acceptAll()` when the provider takes the whole message or none of it. Throw `FailedSmsException` when nothing was accepted.
 
 Once you've defined your custom sender, you may register it via the `extend` method provided by the `Sms` facade. Typically, this should be done within the boot method of your application's `AppServiceProvider` service provider. A `$config` argument will be passed to the closure provided to the `extend` method. This argument will contain the configuration array defined for the sender in the application's `config/sms.php` configuration file:
 

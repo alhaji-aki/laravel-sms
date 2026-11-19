@@ -83,6 +83,20 @@ class TextMessage implements Arrayable, JsonSerializable, Stringable
     }
 
     /**
+     * The recipients as a list, however they were given.
+     *
+     * @return list<string>
+     */
+    public function recipients(): array
+    {
+        if (is_string($this->to)) {
+            return $this->to === '' ? [] : [$this->to];
+        }
+
+        return array_values($this->to);
+    }
+
+    /**
      * Remove all "to" phone numbers from the message.
      */
     public function forgetTo(): static

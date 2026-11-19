@@ -32,7 +32,7 @@ class LogSender implements SenderInterface
     {
         $this->logger->debug((string) $message);
 
-        return new SentMessage($message);
+        return (new SentMessage($message))->acceptAll();
     }
 
     /**

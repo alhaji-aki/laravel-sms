@@ -30,7 +30,7 @@ class ArraySender implements SenderInterface
      */
     public function send(TextMessage $message): ?SentMessage
     {
-        return $this->messages[] = new SentMessage($message);
+        return $this->messages[] = (new SentMessage($message))->acceptAll();
     }
 
     /**
