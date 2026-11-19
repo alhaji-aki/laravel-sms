@@ -57,7 +57,7 @@ class SlackSender implements SenderInterface
             );
         }
 
-        return new SentMessage($message);
+        return (new SentMessage($message))->acceptAll();
     }
 
     /**
